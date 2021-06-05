@@ -33,7 +33,6 @@ def create_app(test_config=None):
         return 'Hello, World!'
 
 
-    db.init_db()
     db.init_app(app)
     app.register_blueprint(auth.bp)
     app.register_blueprint(blog.bp)
