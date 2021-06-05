@@ -1,1 +1,1 @@
-web: gunicorn app:flaskr.create_app()
+web: gunicorn --workers=2 'flaskr:create_app()'
