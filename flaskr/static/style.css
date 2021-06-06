@@ -1,35 +1,62 @@
 /** @format */
 
 html {
-    font-family: sans-serif;
-    background: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fcbad3;
+    background-position:top;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 1rem;
 }
 body {
+    border-radius: 15px;
+
     max-width: 960px;
     margin: 0 auto;
-    background: white;
+    background: #ffffd2;
 }
-h1 {
-    font-family: serif;
-    color: #377ba8;
+h1,h2 {
+    color: darkslateblue;
     margin: 1rem 0;
 }
+h1{
+    font-size: 2em;
+}
+
 a {
-    color: #377ba8;
+    color: #03256c;
+}
+article{
+    background-color:aliceblue;
+    padding: 0em 0em 0.5em 0em;
+    border-radius: 5px;
+}
+header{
+  background: #aa96da;
+  border-radius: 5px;
+  max-width: 960px;
 }
 hr {
     border: none;
-    border-top: 1px solid lightgray;
+}
+label {
+    color:darkslateblue;
+    font-size: 1.5em;
 }
 nav {
-    background: lightgray;
+    border-radius: 15px 15px 0px 0px;
+    background: #a8d8ea;
     display: flex;
     align-items: center;
-    padding: 0 0.5rem;
+    color:darkslateblue;
+    padding: 0.75rem 1rem;
+}
+span{
+    font-size: 1.5em;
 }
 nav h1 {
     flex: auto;
+    padding-left: 0.15em;
     margin: 0;
 }
 nav h1 a {
@@ -42,23 +69,41 @@ nav ul {
     margin: 0;
     padding: 0;
 }
+nav ul li {
+    margin:auto;
+
+}
 nav ul li a,
 nav ul li span,
 header .action {
     display: block;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    margin:auto;
+}
+article{
+    margin: 1em 0.75em 1em 0.75em;
+}
+#new{
+    margin:1rem;
+    text-align: center;
+    font-size: 1.5em;
+}
+#tilde{
+    font-size: 1.5em;
 }
 .content {
     padding: 0 1rem 1rem;
 }
 .content > header {
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid thistle;
     display: flex;
+    margin-top: 13px;
     align-items: flex-end;
 }
 .content > header h1 {
     flex: auto;
-    margin: 1rem 0 0.25rem 0;
+    text-align: center;
+    font-size: 3em;
 }
 .flash {
     margin: 1em 0;
@@ -69,20 +114,23 @@ header .action {
 .post > header {
     display: flex;
     align-items: flex-end;
-    font-size: 0.85em;
+    padding:0.75em;
+    font-size: 1em;
 }
 .post > header > div:first-of-type {
     flex: auto;
 }
 .post > header h1 {
     font-size: 1.5em;
-    margin-bottom: 0;
+    margin: 0;
 }
 .post .about {
-    color: slategray;
+    padding:0.75em;
+    color: darkslateblue;
     font-style: italic;
 }
 .post .body {
+    padding: 0em 0em 0em 0.5em;
     white-space: pre-line;
 }
 .content:last-child {
@@ -109,6 +157,13 @@ input.danger {
     color: #cc2f2e;
 }
 input[type="submit"] {
-    align-self: start;
+    color: darkslateblue;
+    background-color:#a9f1df;
+    border-color: transparent;
+    border-radius: 5px;
+    align-self:center;
     min-width: 10em;
+    font-size: 1.5em;
+    margin-top: 1em;
+    padding: 0.25em;
 }
