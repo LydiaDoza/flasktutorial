@@ -17,9 +17,6 @@ def index():
         resp = s.get("https://api.thecatapi.com/v1/images/search", headers={"x-api-key":"7efdcf90-7cf8-4dc0-b2df-aa0d337e18e4"})
         resp_json=json.loads(resp.text)
         cat_json = resp_json[0]
-        print(cat_json)
-
-        
         cat_url = cat_json["url"]
     db = get_db()
     posts = db.execute(
