@@ -7,7 +7,6 @@ import json
 from flaskr.auth import login_required
 from flaskr.db import get_db
 import requests
-import apikey
 
 bp = Blueprint('blog', __name__)
 
