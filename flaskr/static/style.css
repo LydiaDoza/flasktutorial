@@ -11,6 +11,8 @@ html {
 img{
     margin:auto;
     display:block;
+    max-width: 930px;
+    max-height:600;
 }
 body {
     border-radius: 15px;
