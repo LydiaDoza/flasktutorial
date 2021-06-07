@@ -8,6 +8,10 @@ html {
     background-repeat: no-repeat;
     padding: 1rem;
 }
+img{
+    margin:auto;
+    display:block;
+}
 body {
     border-radius: 15px;
 

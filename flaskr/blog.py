@@ -1,23 +1,65 @@
+import sqlite3
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, render_template, request, url_for, jsonify
 )
 from werkzeug.exceptions import abort
-
+import json
 from flaskr.auth import login_required
 from flaskr.db import get_db
+import requests
+import apikey
 
 bp = Blueprint('blog', __name__)
 
 @bp.route('/')
 def index():
+    with requests.Session() as s:
+        resp = s.get("https://api.thecatapi.com/v1/images/search", headers={"x-api-key":"7efdcf90-7cf8-4dc0-b2df-aa0d337e18e4"})
+        resp_json=json.loads(resp.text)
+        cat_json = resp_json[0]
+        print(cat_json)
+
+        
+        cat_url = cat_json["url"]
     db = get_db()
     posts = db.execute(
         'SELECT p.id, title, body, created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
-    return render_template('blog/index.html', posts=posts)
+    return render_template('blog/index.html', posts=posts, cat_url=cat_url)
 
+class post:
+    def __init__(self, posttitle, body, createdate, username):
+        self.title = posttitle
+        self.body = body
+        self.createDate=createdate
+        self.username=username
+
+
+@bp.route('/api/v1/posts/all')
+def api_all():
+    db = get_db() 
+    post_list = []
+    posts = db.execute(
+        'SELECT p.id, title, body, created, author_id, username'
+        ' FROM post p JOIN user u ON p.author_id = u.id'
+        ' ORDER BY created DESC'
+    ).fetchall()
+    cur = db.cursor()
+    posts2 = cur.execute(
+        'SELECT p.id, title, body, created, author_id, username'
+        ' FROM post p JOIN user u ON p.author_id = u.id'
+        ' ORDER BY created DESC'
+    ).fetchall()
+    print("posts length")
+    print(posts.__len__())
+    print("now do the posts stuff")
+    for row in posts:
+        post_list.append(
+            post(row[1],row[2],row[3],row[5])
+        )
+    return json.dumps(post_list)
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
